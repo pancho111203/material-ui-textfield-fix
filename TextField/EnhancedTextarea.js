@@ -138,11 +138,10 @@ var EnhancedTextarea = function (_Component) {
     key: 'syncHeightWithShadow',
     value: function syncHeightWithShadow(newValue, event) {
       var shadow = this.refs.shadow;
+      var displayText = this.props.hintText && (newValue === '' || newValue === undefined || newValue === null) ? this.props.hintText : newValue;
 
-      if (newValue !== undefined) {
-        shadow.value = newValue;
-      } else if (this.props.hintText !== undefined) {
-        shadow.value = this.props.hintText;
+      if (displayText !== undefined) {
+        shadow.value = displayText;
       }
 
       var newHeight = shadow.scrollHeight;
